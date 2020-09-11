@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 function CakeContainer(props) {
     return (
         <div>
-            <h2>Number of cakes - {props.numOfCakes}</h2>
+            <h2>Number of cakes(w/mapProp funcs) - {props.numOfCakes}</h2>
             <button onClick={props.buyCake}>Buy Cake</button>
         </div>
     )
@@ -29,6 +29,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 // use reduxConnnect to tie the mapping functions to CakeContainer
+// also connnects CakeContainer to Redux Store
 export default connect(
     mapStateToProps,
     mapDispatchToProps

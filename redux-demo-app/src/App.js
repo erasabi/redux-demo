@@ -1,20 +1,18 @@
 import React from 'react';
 import './App.css';
-import CakeContainer from './components/CakeContainer';
-// import provider 
-//  - this allows us to provide our created store to our app
 import { Provider } from 'react-redux'
-// import the store you created 
 import { store } from './redux/store';
+import CakeContainer from './components/CakeContainer';
+// import new CakeContainer that uses Selector and Dispatcher
+import HooksCakeContainer from './components/HooksCakeContainer';
 
 function App() {
   return (
-    // add Provider component and nest App children inside
-    //  - doing this in App.js make store available to basically all components
     <Provider store={store}>
       <div className="App">
         <CakeContainer />
-      </div>      
+        <HooksCakeContainer />
+      </div>
     </Provider>
   );
 }
