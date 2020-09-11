@@ -1,4 +1,5 @@
-const { bindActionCreators } = require("redux")
+const redux = require("redux")
+const createStore = redux.createStore
 
 const BUY_CAKE = 'BUY_CAKE'
 
@@ -29,3 +30,31 @@ const reducer = (state = initialState, action) => {
         default: return state
     }
 }
+// create your redux store
+// - argument must be a reducer that returns the initial state 
+const store = createStore(reducer)
+
+// Redux Store Methods
+//  1 getState(): returns current state of store
+//  2 subscribe(someAnonFunction): 
+//      - lets you listen in on store updates
+//      - run someAnonFunction that triggers whenever actions are dispatched on store
+//      - returns the unsubscribe function to be called when you're done listening
+//  3 dispatch(someReducer):
+//      - lets you change state
+//      - takes in reducer functions
+
+// #1 getState() to print state
+console.log('Initial state: ', store.getState()) 
+
+// #2a subscribe() used to print state on update
+const unsubscribe = store.subscribe(() => console.log('Updated state: ', store.getState()))
+
+// #3 dispatch() used to buy/remove a cake from store 
+//   - which triggers subsribe to print after each removal
+store.dispatch(buyCake())
+store.dispatch(buyCake())
+store.dispatch(buyCake())
+
+// #2b unsubscribe() made from return of subscribe to stop listener
+unsubscribe()
